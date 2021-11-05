@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordNuker.NET", "DiscordNuker.NET\DiscordNuker.NET.csproj", "{3FD3965F-74FD-4E41-BE6A-84629D202C2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FD3965F-74FD-4E41-BE6A-84629D202C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD3965F-74FD-4E41-BE6A-84629D202C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD3965F-74FD-4E41-BE6A-84629D202C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD3965F-74FD-4E41-BE6A-84629D202C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D99B4658-B564-45BD-98B5-2253F9D87779}
+	EndGlobalSection
+EndGlobal
