@@ -26,6 +26,7 @@ namespace DiscordNuker.NET
             if (msg == null) return;
 
             int argPos = 0;
+
             if (!(msg.HasStringPrefix(".", ref argPos) || msg.HasMentionPrefix(Client.CurrentUser, ref argPos))) return;
 
             var context = new CommandContext(Client, msg);
