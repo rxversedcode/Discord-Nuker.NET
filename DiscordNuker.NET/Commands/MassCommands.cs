@@ -121,10 +121,39 @@ namespace DiscordNuker.NET.Commands
             await ReplyAsync("Check console.");
             Console.WriteLine("[-] Message to say after mention?");
             var msg = Console.ReadLine();
-            ;
+
             foreach (var mem in await Context.Guild.GetUsersAsync())
             {
                 await ReplyAsync(mem.Mention + msg);
+            }
+        }
+
+        [Command("mass mention", RunMode = RunMode.Async)]
+
+        public async Task MentionAll()
+        {
+            await ReplyAsync("Check console.");
+
+            Console.WriteLine("[-] Message to send after @everyone?");
+            var msg = Console.ReadLine();
+            Console.WriteLine("[-] How many times should this be repeated");
+            var repeat = Console.ReadLine();
+            int num = Convert.ToInt32(repeat);
+            for (int i = 0; i < num; i++)
+            {
+                foreach (var channel in await Context.Guild.GetTextChannelsAsync())
+                {
+                    try
+                    {
+                        await channel.SendMessageAsync("@everyone" + msg);
+                        Console.WriteLine("Sent " + msg + " in " + channel + " , sending: " + num + " messages in every channel.");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Couldn't send " + msg + " in " + channel);
+                    }
+
+                }
             }
         }
     }
