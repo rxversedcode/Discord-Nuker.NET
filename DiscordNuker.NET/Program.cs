@@ -14,8 +14,14 @@ namespace DiscordNuker.NET
         private DiscordSocketClient _client;
         public async Task MainAsync()
         {
+            Console.Title = "rxversed's nuker.";
+            _client = new DiscordSocketClient(new DiscordSocketConfig()
+            {
+#if DEBUG
+                LogLevel = LogSeverity.Verbose
+#endif
 
-            _client = new DiscordSocketClient();
+            });
             CommandHandler Handler;
             Handler = new CommandHandler();
             await Handler.Init(_client);
@@ -28,6 +34,7 @@ namespace DiscordNuker.NET
             try
             {
                 await _client.LoginAsync(TokenType.Bot, tkn);
+                Console.WriteLine("Logging in..");
             }
             catch (Exception ex)
             {
@@ -39,7 +46,8 @@ namespace DiscordNuker.NET
             await _client.StartAsync();
             _client.Ready += () =>
             {
-                Console.WriteLine("Ready! User: " + _client.CurrentUser);
+                Console.WriteLine("Ready! Connected with " + _client.CurrentUser);
+                _client.SetStatusAsync(UserStatus.Offline);
                 return Task.CompletedTask;
             };
 
@@ -54,13 +62,14 @@ namespace DiscordNuker.NET
         {
             Console.ForegroundColor = ConsoleColor.Red;
 #if DEBUG
-Console.WriteLine("Log: " + msg.ToString());
+            Console.WriteLine("Log: " + msg.ToString());
 #endif
             return Task.CompletedTask;
         }
 
         private static Task Help()
         {
+
             File.CreateText("NukerLogs.txt");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine(@"
@@ -94,16 +103,21 @@ nn:::::::::::::::nu::::u    u::::u   k:::::k k:::::k   e::::::e     e:::::err:::
 ");
             Thread.Sleep(1000);
             Console.Clear();
-            Console.WriteLine("\n [-] Prefix = \"n\".");
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("[-] Prefix = \"n\".");
+            Console.WriteLine("Type all commands in chat.");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(@"Mass Actions:
+    Creation Commands:
 .mass chan = Mass creates text channels
-.mass del = Mass deletes text, voice channnels and categories.
 .mass cate = Mass creates categories.
 .mass vc = Mass creates voice channels.
+    Deletion Commands:
+.mass del = Mass deletes text, voice channnels and categories.
 .mass ban = Bans everyone in a server and outputs it in a file (same file where this exe is located)
-.mass ping = Pings every single user in a seperate mention (not @everyone)
-.mass mention = Pings @everyone in every single channel
+   Mention Commands:
+.mass mention = Mentions every single user in a seperate message (not @everyone)
+.mass ping = Pings @everyone in every single channel
 ");
             return Task.CompletedTask;
         }
