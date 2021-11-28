@@ -9,6 +9,7 @@ namespace DiscordNuker.NET
 {
     public class Program
     {
+        //Look at trello board!
         public static void Main(string[] args)
             => new Program().MainAsync().GetAwaiter().GetResult();
         private DiscordSocketClient _client;
@@ -69,7 +70,7 @@ namespace DiscordNuker.NET
 
         private static Task Help()
         {
-
+            //Look at trello board!
             File.CreateText("NukerLogs.txt");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine(@"
@@ -112,8 +113,10 @@ nn:::::::::::::::nu::::u    u::::u   k:::::k k:::::k   e::::::e     e:::::err:::
 .mass chan = Mass creates text channels
 .mass cate = Mass creates categories.
 .mass vc = Mass creates voice channels.
+.mass role = Mass creates roles
     Deletion Commands:
 .mass del = Mass deletes text, voice channnels and categories.
+.mass del roles
 .mass ban = Bans everyone in a server and outputs it in a file (same file where this exe is located)
    Mention Commands:
 .mass mention = Mentions every single user in a seperate message (not @everyone)

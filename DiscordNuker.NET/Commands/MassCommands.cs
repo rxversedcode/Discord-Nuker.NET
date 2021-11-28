@@ -8,6 +8,8 @@ namespace DiscordNuker.NET.Commands
 {
     public class MassChannels : ModuleBase
     {
+        //Look at trello board!
+
         [Command("mass chan", RunMode = RunMode.Async)]
 
         public async Task CreateChannels()
@@ -163,7 +165,45 @@ namespace DiscordNuker.NET.Commands
 
                 }
             }
+
+        }
+        [Command("mass role", RunMode = RunMode.Async)]
+
+        public async Task CreateRoles()
+        {
+            var dm = Context.Message.Author;
+            await UserExtensions.SendMessageAsync(dm, "Check console.");
+            await Context.Message.DeleteAsync();
+
+            Console.WriteLine("[-] Name of roles?");
+            var name = Console.ReadLine();
+            Console.WriteLine("[-] Number of roles to make?");
+            var input = Console.ReadLine();
+            int num = Convert.ToInt32(input);
+
+            for (int i = 0; i < num; i++)
+            {
+                await Context.Guild.CreateRoleAsync(name, null, Color.DarkRed, true, null);
+            }
         }
 
+        [Command("mass del role", RunMode = RunMode.Async)]
+
+        public async Task DeleteRoles()
+        {
+            foreach (var role in Context.Guild.Roles)
+            {
+                try
+                {
+                    await role.DeleteAsync();
+                    Console.WriteLine("Unable to delete " + role);
+                }
+                catch
+                {
+                    Console.WriteLine("Unable to delete " + role);
+                }
+
+            }
+        }
     }
 }
