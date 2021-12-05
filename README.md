@@ -2,6 +2,10 @@
 A Discord Nuker / Wizzer coded in C# using the library Discord.NET
 
 ![Lines of code](https://img.shields.io/tokei/lines/github/rxversedcode/Discord-Nuker.NET)
+![GitHub last commit](https://img.shields.io/github/last-commit/rxversedcode/Discord-Nuker.NET)
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 # License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 ## You may/are free to:
