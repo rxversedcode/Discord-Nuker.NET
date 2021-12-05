@@ -11,7 +11,6 @@ namespace DiscordNuker.NET.Commands
 {
     public class NukeCommands : ModuleBase
     {
-        //Look at trello board!
 
         [Command("mass chan", RunMode = RunMode.Async)]
 
