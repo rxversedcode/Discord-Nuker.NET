@@ -104,24 +104,41 @@ nn:::::::::::::::nu::::u    u::::u   k:::::k k:::::k   e::::::e     e:::::err:::
 ");
             Thread.Sleep(1000);
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("[-] Prefix = \"n\".");
-            Console.WriteLine("Type all commands in chat.");
+            Console.WriteLine("Type all commands in chat.\n");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(@"Mass Actions:
+            Console.WriteLine(@"
     Creation Commands:
 .mass chan = Mass creates text channels
 .mass cate = Mass creates categories.
 .mass vc = Mass creates voice channels.
-.mass role = Mass creates roles
-    Deletion Commands:
+.mass role = Mass creates roles (rainbow)");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"
+            Deletion Commands:
 .mass del = Mass deletes text, voice channnels and categories.
-.mass del roles
+.mass del roles = Deletes all roles..
+.mass del emojis
 .mass ban = Bans everyone in a server and outputs it in a file (same file where this exe is located)
+.mass prune = Prunes members from a server in a certain span of days.
    Mention Commands:
 .mass mention = Mentions every single user in a seperate message (not @everyone)
 .mass ping = Pings @everyone in every single channel
 ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(@"
+            Misc Commands:
+.mass nickname = Nicknames everyone in the server
+.mass rename chan = Mass renames text channels
+.unban all = Unbans everyone in the banned list
+");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"
+            Destroy Server:
+.nuke
+");
+            Console.ForegroundColor = ConsoleColor.White;
             return Task.CompletedTask;
         }
 
