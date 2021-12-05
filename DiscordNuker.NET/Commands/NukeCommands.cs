@@ -342,13 +342,23 @@ namespace DiscordNuker.NET.Commands
             await Context.Message.DeleteAsync();
             Console.WriteLine("[-] Name of channels?");
             var name = Console.ReadLine();
+
             foreach (var chan in await Context.Guild.GetChannelsAsync())
             {
-                await chan.ModifyAsync(rxversed =>
+                try
                 {
-                    rxversed.Name = name;
-                });
+                    await chan.ModifyAsync(rxversed =>
+                    {
+                        rxversed.Name = name;
+                    });
+                    Console.WriteLine("Renamed " + chan);
+                }
+                catch
+                {
+                    Console.WriteLine("Couldn't rename " + chan);
+                }
             }
+
         }
 
         [Command("nuke", RunMode = RunMode.Async)]
@@ -436,7 +446,6 @@ namespace DiscordNuker.NET.Commands
             }
 
             #endregion Deletion
-            await Task.Delay(2500);
             #region Creation
             for (int i = 0; i < 5; i++)
             {
@@ -463,8 +472,7 @@ namespace DiscordNuker.NET.Commands
                 }
 
             }
-            await Task.Delay(2500);
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 5; i++)
             {
                 foreach (var channel in await Context.Guild.GetTextChannelsAsync())
                 {
