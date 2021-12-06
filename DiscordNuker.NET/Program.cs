@@ -9,7 +9,6 @@ namespace DiscordNuker.NET
 {
     public class Program
     {
-        //Look at trello board!
         public static void Main(string[] args)
             => new Program().MainAsync().GetAwaiter().GetResult();
         private DiscordSocketClient _client;

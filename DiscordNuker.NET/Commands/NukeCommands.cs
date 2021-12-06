@@ -11,7 +11,6 @@ namespace DiscordNuker.NET.Commands
 {
     public class NukeCommands : ModuleBase
     {
-        //Look at trello board!net5.0
 
         [Command("mass chan", RunMode = RunMode.Async)]
 
@@ -29,6 +28,7 @@ namespace DiscordNuker.NET.Commands
             string channame = Console.ReadLine();
             var count = Stopwatch.StartNew();
             count.Start();
+
             for (int i = 0; i < num; i++)
             {
                 try
@@ -44,7 +44,6 @@ namespace DiscordNuker.NET.Commands
             }
             count.Stop();
             Console.WriteLine("Made " + num + " channels in " + count.ElapsedMilliseconds);
-
         }
 
         [Command("mass del", RunMode = RunMode.Async)]
